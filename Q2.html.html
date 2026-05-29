@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار المتابعين – المعيار الأول ج2</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #0d1b3e; color: #f8f9ff; direction: rtl; }
+
+.header { background: linear-gradient(135deg,#0a1530,#182560); padding: 20px 20px 14px; text-align: center; border-bottom: 3px solid #c9982a; }
+.header h1 { font-size: 1.3rem; font-weight: 900; color: #f0c040; }
+.header p  { font-size: 0.82rem; color: #9badd4; margin-top: 4px; }
+.badge { display: inline-block; background: #c9982a; color: #0d1b3e; font-weight: 700; font-size: 0.72rem; padding: 2px 12px; border-radius: 20px; margin-top: 5px; }
+
+.wrap { max-width: 680px; margin: 20px auto 60px; padding: 0 14px; }
+
+.qcard { background: linear-gradient(160deg,#162250,#1a2b60); border-radius: 14px; border: 1.5px solid rgba(201,152,42,0.2); margin-bottom: 18px; padding: 20px 18px 18px; }
+
+.qhead { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+.qnum { background: #c9982a; color: #0d1b3e; font-weight: 900; font-size: 0.9rem; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.qtext { font-size: 0.97rem; font-weight: 700; line-height: 1.7; color: #dde5ff; }
+.qop { font-family: 'Courier New',monospace; background: rgba(0,0,0,0.3); border: 1px solid rgba(201,152,42,0.3); border-radius: 7px; padding: 7px 12px; font-size: 0.95rem; color: #f0c040; display: inline-block; margin: 5px 0 3px; letter-spacing: 1px; direction: ltr; }
+
+input[type=radio] { display: none; }
+
+.opt { display: flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.11); border-radius: 10px; padding: 11px 13px; color: #c8d4f0; font-size: 0.93rem; font-weight: 600; cursor: pointer; margin-bottom: 8px; width: 100%; transition: background 0.15s; }
+.opt:hover { background: rgba(201,152,42,0.1); border-color: #c9982a; }
+.obadge { background: rgba(201,152,42,0.2); color: #f0c040; font-weight: 900; min-width: 27px; height: 27px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.83rem; flex-shrink: 0; }
+
+/* correct = green always after any pick */
+#q11_1:checked~.opts .c11_1,#q11_2:checked~.opts .c11_1,#q11_3:checked~.opts .c11_1,#q11_4:checked~.opts .c11_1,
+#q12_1:checked~.opts .c12_1,#q12_2:checked~.opts .c12_1,#q12_3:checked~.opts .c12_1,#q12_4:checked~.opts .c12_1,
+#q13_1:checked~.opts .c13_3,#q13_2:checked~.opts .c13_3,#q13_3:checked~.opts .c13_3,#q13_4:checked~.opts .c13_3,
+#q14_1:checked~.opts .c14_2,#q14_2:checked~.opts .c14_2,#q14_3:checked~.opts .c14_2,#q14_4:checked~.opts .c14_2,
+#q15_1:checked~.opts .c15_2,#q15_2:checked~.opts .c15_2,#q15_3:checked~.opts .c15_2,#q15_4:checked~.opts .c15_2,
+#q16_1:checked~.opts .c16_3,#q16_2:checked~.opts .c16_3,#q16_3:checked~.opts .c16_3,#q16_4:checked~.opts .c16_3,
+#q17_1:checked~.opts .c17_1,#q17_2:checked~.opts .c17_1,#q17_3:checked~.opts .c17_1,#q17_4:checked~.opts .c17_1,
+#q18_1:checked~.opts .c18_2,#q18_2:checked~.opts .c18_2,#q18_3:checked~.opts .c18_2,#q18_4:checked~.opts .c18_2,
+#q19_1:checked~.opts .c19_2,#q19_2:checked~.opts .c19_2,#q19_3:checked~.opts .c19_2,#q19_4:checked~.opts .c19_2,
+#q20_1:checked~.opts .c20_1,#q20_2:checked~.opts .c20_1,#q20_3:checked~.opts .c20_1,#q20_4:checked~.opts .c20_1,
+#q21_1:checked~.opts .c21_4,#q21_2:checked~.opts .c21_4,#q21_3:checked~.opts .c21_4,#q21_4:checked~.opts .c21_4,
+#q22_1:checked~.opts .c22_2,#q22_2:checked~.opts .c22_2,#q22_3:checked~.opts .c22_2,#q22_4:checked~.opts .c22_2,
+#q23_1:checked~.opts .c23_4,#q23_2:checked~.opts .c23_4,#q23_3:checked~.opts .c23_4,#q23_4:checked~.opts .c23_4,
+#q24_1:checked~.opts .c24_3,#q24_2:checked~.opts .c24_3,#q24_3:checked~.opts .c24_3,#q24_4:checked~.opts .c24_3,
+#q25_1:checked~.opts .c25_4,#q25_2:checked~.opts .c25_4,#q25_3:checked~.opts .c25_4,#q25_4:checked~.opts .c25_4,
+#q26_1:checked~.opts .c26_4,#q26_2:checked~.opts .c26_4,#q26_3:checked~.opts .c26_4,#q26_4:checked~.opts .c26_4,
+#q27_1:checked~.opts .c27_1,#q27_2:checked~.opts .c27_1,#q27_3:checked~.opts .c27_1,#q27_4:checked~.opts .c27_1,
+#q28_1:checked~.opts .c28_1,#q28_2:checked~.opts .c28_1,#q28_3:checked~.opts .c28_1,#q28_4:checked~.opts .c28_1,
+#q29_1:checked~.opts .c29_3,#q29_2:checked~.opts .c29_3,#q29_3:checked~.opts .c29_3,#q29_4:checked~.opts .c29_3,
+#q30_1:checked~.opts .c30_4,#q30_2:checked~.opts .c30_4,#q30_3:checked~.opts .c30_4,#q30_4:checked~.opts .c30_4
+{ background: rgba(29,184,122,0.18)!important; border-color: #1db87a!important; color: #7fffcc!important; }
+
+/* badge green */
+#q11_1:checked~.opts .c11_1 .obadge,#q11_2:checked~.opts .c11_1 .obadge,#q11_3:checked~.opts .c11_1 .obadge,#q11_4:checked~.opts .c11_1 .obadge,
+#q12_1:checked~.opts .c12_1 .obadge,#q12_2:checked~.opts .c12_1 .obadge,#q12_3:checked~.opts .c12_1 .obadge,#q12_4:checked~.opts .c12_1 .obadge,
+#q13_1:checked~.opts .c13_3 .obadge,#q13_2:checked~.opts .c13_3 .obadge,#q13_3:checked~.opts .c13_3 .obadge,#q13_4:checked~.opts .c13_3 .obadge,
+#q14_1:checked~.opts .c14_2 .obadge,#q14_2:checked~.opts .c14_2 .obadge,#q14_3:checked~.opts .c14_2 .obadge,#q14_4:checked~.opts .c14_2 .obadge,
+#q15_1:checked~.opts .c15_2 .obadge,#q15_2:checked~.opts .c15_2 .obadge,#q15_3:checked~.opts .c15_2 .obadge,#q15_4:checked~.opts .c15_2 .obadge,
+#q16_1:checked~.opts .c16_3 .obadge,#q16_2:checked~.opts .c16_3 .obadge,#q16_3:checked~.opts .c16_3 .obadge,#q16_4:checked~.opts .c16_3 .obadge,
+#q17_1:checked~.opts .c17_1 .obadge,#q17_2:checked~.opts .c17_1 .obadge,#q17_3:checked~.opts .c17_1 .obadge,#q17_4:checked~.opts .c17_1 .obadge,
+#q18_1:checked~.opts .c18_2 .obadge,#q18_2:checked~.opts .c18_2 .obadge,#q18_3:checked~.opts .c18_2 .obadge,#q18_4:checked~.opts .c18_2 .obadge,
+#q19_1:checked~.opts .c19_2 .obadge,#q19_2:checked~.opts .c19_2 .obadge,#q19_3:checked~.opts .c19_2 .obadge,#q19_4:checked~.opts .c19_2 .obadge,
+#q20_1:checked~.opts .c20_1 .obadge,#q20_2:checked~.opts .c20_1 .obadge,#q20_3:checked~.opts .c20_1 .obadge,#q20_4:checked~.opts .c20_1 .obadge,
+#q21_1:checked~.opts .c21_4 .obadge,#q21_2:checked~.opts .c21_4 .obadge,#q21_3:checked~.opts .c21_4 .obadge,#q21_4:checked~.opts .c21_4 .obadge,
+#q22_1:checked~.opts .c22_2 .obadge,#q22_2:checked~.opts .c22_2 .obadge,#q22_3:checked~.opts .c22_2 .obadge,#q22_4:checked~.opts .c22_2 .obadge,
+#q23_1:checked~.opts .c23_4 .obadge,#q23_2:checked~.opts .c23_4 .obadge,#q23_3:checked~.opts .c23_4 .obadge,#q23_4:checked~.opts .c23_4 .obadge,
+#q24_1:checked~.opts .c24_3 .obadge,#q24_2:checked~.opts .c24_3 .obadge,#q24_3:checked~.opts .c24_3 .obadge,#q24_4:checked~.opts .c24_3 .obadge,
+#q25_1:checked~.opts .c25_4 .obadge,#q25_2:checked~.opts .c25_4 .obadge,#q25_3:checked~.opts .c25_4 .obadge,#q25_4:checked~.opts .c25_4 .obadge,
+#q26_1:checked~.opts .c26_4 .obadge,#q26_2:checked~.opts .c26_4 .obadge,#q26_3:checked~.opts .c26_4 .obadge,#q26_4:checked~.opts .c26_4 .obadge,
+#q27_1:checked~.opts .c27_1 .obadge,#q27_2:checked~.opts .c27_1 .obadge,#q27_3:checked~.opts .c27_1 .obadge,#q27_4:checked~.opts .c27_1 .obadge,
+#q28_1:checked~.opts .c28_1 .obadge,#q28_2:checked~.opts .c28_1 .obadge,#q28_3:checked~.opts .c28_1 .obadge,#q28_4:checked~.opts .c28_1 .obadge,
+#q29_1:checked~.opts .c29_3 .obadge,#q29_2:checked~.opts .c29_3 .obadge,#q29_3:checked~.opts .c29_3 .obadge,#q29_4:checked~.opts .c29_3 .obadge,
+#q30_1:checked~.opts .c30_4 .obadge,#q30_2:checked~.opts .c30_4 .obadge,#q30_3:checked~.opts .c30_4 .obadge,#q30_4:checked~.opts .c30_4 .obadge
+{ background:#1db87a!important; color:white!important; }
+
+/* wrong = red */
+#q11_2:checked~.opts .s11_2,#q11_3:checked~.opts .s11_3,#q11_4:checked~.opts .s11_4,
+#q12_2:checked~.opts .s12_2,#q12_3:checked~.opts .s12_3,#q12_4:checked~.opts .s12_4,
+#q13_1:checked~.opts .s13_1,#q13_2:checked~.opts .s13_2,#q13_4:checked~.opts .s13_4,
+#q14_1:checked~.opts .s14_1,#q14_3:checked~.opts .s14_3,#q14_4:checked~.opts .s14_4,
+#q15_1:checked~.opts .s15_1,#q15_3:checked~.opts .s15_3,#q15_4:checked~.opts .s15_4,
+#q16_1:checked~.opts .s16_1,#q16_2:checked~.opts .s16_2,#q16_4:checked~.opts .s16_4,
+#q17_2:checked~.opts .s17_2,#q17_3:checked~.opts .s17_3,#q17_4:checked~.opts .s17_4,
+#q18_1:checked~.opts .s18_1,#q18_3:checked~.opts .s18_3,#q18_4:checked~.opts .s18_4,
+#q19_1:checked~.opts .s19_1,#q19_3:checked~.opts .s19_3,#q19_4:checked~.opts .s19_4,
+#q20_2:checked~.opts .s20_2,#q20_3:checked~.opts .s20_3,#q20_4:checked~.opts .s20_4,
+#q21_1:checked~.opts .s21_1,#q21_2:checked~.opts .s21_2,#q21_3:checked~.opts .s21_3,
+#q22_1:checked~.opts .s22_1,#q22_3:checked~.opts .s22_3,#q22_4:checked~.opts .s22_4,
+#q23_1:checked~.opts .s23_1,#q23_2:checked~.opts .s23_2,#q23_3:checked~.opts .s23_3,
+#q24_1:checked~.opts .s24_1,#q24_2:checked~.opts .s24_2,#q24_4:checked~.opts .s24_4,
+#q25_1:checked~.opts .s25_1,#q25_2:checked~.opts .s25_2,#q25_3:checked~.opts .s25_3,
+#q26_1:checked~.opts .s26_1,#q26_2:checked~.opts .s26_2,#q26_3:checked~.opts .s26_3,
+#q27_2:checked~.opts .s27_2,#q27_3:checked~.opts .s27_3,#q27_4:checked~.opts .s27_4,
+#q28_2:checked~.opts .s28_2,#q28_3:checked~.opts .s28_3,#q28_4:checked~.opts .s28_4,
+#q29_1:checked~.opts .s29_1,#q29_2:checked~.opts .s29_2,#q29_4:checked~.opts .s29_4,
+#q30_1:checked~.opts .s30_1,#q30_2:checked~.opts .s30_2,#q30_3:checked~.opts .s30_3
+{ background:rgba(224,64,64,0.15)!important; border-color:#e04040!important; color:#ffaaaa!important; }
+
+/* badge red */
+#q11_2:checked~.opts .s11_2 .obadge,#q11_3:checked~.opts .s11_3 .obadge,#q11_4:checked~.opts .s11_4 .obadge,
+#q12_2:checked~.opts .s12_2 .obadge,#q12_3:checked~.opts .s12_3 .obadge,#q12_4:checked~.opts .s12_4 .obadge,
+#q13_1:checked~.opts .s13_1 .obadge,#q13_2:checked~.opts .s13_2 .obadge,#q13_4:checked~.opts .s13_4 .obadge,
+#q14_1:checked~.opts .s14_1 .obadge,#q14_3:checked~.opts .s14_3 .obadge,#q14_4:checked~.opts .s14_4 .obadge,
+#q15_1:checked~.opts .s15_1 .obadge,#q15_3:checked~.opts .s15_3 .obadge,#q15_4:checked~.opts .s15_4 .obadge,
+#q16_1:checked~.opts .s16_1 .obadge,#q16_2:checked~.opts .s16_2 .obadge,#q16_4:checked~.opts .s16_4 .obadge,
+#q17_2:checked~.opts .s17_2 .obadge,#q17_3:checked~.opts .s17_3 .obadge,#q17_4:checked~.opts .s17_4 .obadge,
+#q18_1:checked~.opts .s18_1 .obadge,#q18_3:checked~.opts .s18_3 .obadge,#q18_4:checked~.opts .s18_4 .obadge,
+#q19_1:checked~.opts .s19_1 .obadge,#q19_3:checked~.opts .s19_3 .obadge,#q19_4:checked~.opts .s19_4 .obadge,
+#q20_2:checked~.opts .s20_2 .obadge,#q20_3:checked~.opts .s20_3 .obadge,#q20_4:checked~.opts .s20_4 .obadge,
+#q21_1:checked~.opts .s21_1 .obadge,#q21_2:checked~.opts .s21_2 .obadge,#q21_3:checked~.opts .s21_3 .obadge,
+#q22_1:checked~.opts .s22_1 .obadge,#q22_3:checked~.opts .s22_3 .obadge,#q22_4:checked~.opts .s22_4 .obadge,
+#q23_1:checked~.opts .s23_1 .obadge,#q23_2:checked~.opts .s23_2 .obadge,#q23_3:checked~.opts .s23_3 .obadge,
+#q24_1:checked~.opts .s24_1 .obadge,#q24_2:checked~.opts .s24_2 .obadge,#q24_4:checked~.opts .s24_4 .obadge,
+#q25_1:checked~.opts .s25_1 .obadge,#q25_2:checked~.opts .s25_2 .obadge,#q25_3:checked~.opts .s25_3 .obadge,
+#q26_1:checked~.opts .s26_1 .obadge,#q26_2:checked~.opts .s26_2 .obadge,#q26_3:checked~.opts .s26_3 .obadge,
+#q27_2:checked~.opts .s27_2 .obadge,#q27_3:checked~.opts .s27_3 .obadge,#q27_4:checked~.opts .s27_4 .obadge,
+#q28_2:checked~.opts .s28_2 .obadge,#q28_3:checked~.opts .s28_3 .obadge,#q28_4:checked~.opts .s28_4 .obadge,
+#q29_1:checked~.opts .s29_1 .obadge,#q29_2:checked~.opts .s29_2 .obadge,#q29_4:checked~.opts .s29_4 .obadge,
+#q30_1:checked~.opts .s30_1 .obadge,#q30_2:checked~.opts .s30_2 .obadge,#q30_3:checked~.opts .s30_3 .obadge
+{ background:#e04040!important; color:white!important; }
+
+/* explanation */
+.exp { display:none; margin-top:13px; background:rgba(0,0,0,0.22); border-right:4px solid #c9982a; border-radius:9px; padding:12px 14px; font-size:0.87rem; line-height:1.85; color:#c8d8ff; }
+.etitle { color:#f0c040; font-weight:700; margin-bottom:7px; font-size:0.9rem; }
+.estep { background:rgba(255,255,255,0.06); border-radius:5px; padding:4px 9px; margin:3px 0; font-family:'Courier New',monospace; font-size:0.83rem; color:#e0edff; direction:ltr; text-align:left; }
+
+#q11_1:checked~.exp11,#q12_1:checked~.exp12,#q13_3:checked~.exp13,
+#q14_2:checked~.exp14,#q15_2:checked~.exp15,#q16_3:checked~.exp16,
+#q17_1:checked~.exp17,#q18_2:checked~.exp18,#q19_2:checked~.exp19,
+#q20_1:checked~.exp20,#q21_4:checked~.exp21,#q22_2:checked~.exp22,
+#q23_4:checked~.exp23,#q24_3:checked~.exp24,#q25_4:checked~.exp25,
+#q26_4:checked~.exp26,#q27_1:checked~.exp27,#q28_1:checked~.exp28,
+#q29_3:checked~.exp29,#q30_4:checked~.exp30
+{ display:block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🖥️ اختبار المتابعين – حاسب</h1>
+  <p>المعيار الأول | الجزء الثاني (11-30)</p>
+  <div class="badge">الخبير / محمد السواط</div>
+</div>
+
+<div class="wrap">
+
+<!-- Q11 -->
+<div class="qcard">
+  <input type="radio" name="q11" id="q11_1"><input type="radio" name="q11" id="q11_2"><input type="radio" name="q11" id="q11_3"><input type="radio" name="q11" id="q11_4">
+  <div class="qhead"><div class="qnum">11</div><div class="qtext">................ هي مصفوفة مربعة تكون جميع عناصرها أصفاراً ما عدا العناصر الواقعة على القطر الرئيسي، ويكون على الأقل أحد عناصر هذا القطر غير صفري.</div></div>
+  <div class="opts">
+    <label for="q11_1" class="opt c11_1"><span class="obadge">أ</span>المصفوفة القطرية</label>
+    <label for="q11_2" class="opt s11_2"><span class="obadge">ب</span>مصفوفة الوحدة</label>
+    <label for="q11_3" class="opt s11_3"><span class="obadge">ج</span>مصفوفة العمود</label>
+    <label for="q11_4" class="opt s11_4"><span class="obadge">د</span>مصفوفة الصف</label>
+  </div>
+  <div class="exp exp11"><div class="etitle">💡 شرح الإجابة</div>المصفوفة القطرية هي مصفوفة مربعة جميع عناصرها أصفار ما عدا القطر الرئيسي. مصفوفة الوحدة نوع خاص منها (قطرها كله = 1).</div>
+</div>
+
+<!-- Q12 -->
+<div class="qcard">
+  <input type="radio" name="q12" id="q12_1"><input type="radio" name="q12" id="q12_2"><input type="radio" name="q12" id="q12_3"><input type="radio" name="q12" id="q12_4">
+  <div class="qhead"><div class="qnum">12</div><div class="qtext">ما القيمة الصحيحة للناتج عند تحويل العدد العشري (10.375) إلى النظام الثنائي (Binary)؟</div></div>
+  <div class="opts">
+    <label for="q12_1" class="opt c12_1"><span class="obadge">أ</span>1010.011</label>
+    <label for="q12_2" class="opt s12_2"><span class="obadge">ب</span>001.101</label>
+    <label for="q12_3" class="opt s12_3"><span class="obadge">ج</span>001.111</label>
+    <label for="q12_4" class="opt s12_4"><span class="obadge">د</span>101.111</label>
+  </div>
+  <div class="exp exp12"><div class="etitle">💡 نحوّل الجزء الصحيح والكسري منفصلين:</div>
+    <div class="estep">10 → 1010</div>
+    <div class="estep">0.375 × 2 = 0.75 → 0</div>
+    <div class="estep">0.75  × 2 = 1.5  → 1</div>
+    <div class="estep">0.5   × 2 = 1.0  → 1</div>
+    <div class="estep">✅ النتيجة: 1010.011</div>
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="qcard">
+  <input type="radio" name="q13" id="q13_1"><input type="radio" name="q13" id="q13_2"><input type="radio" name="q13" id="q13_3"><input type="radio" name="q13" id="q13_4">
+  <div class="qhead"><div class="qnum">13</div><div class="qtext">ما القيمة العشرية المكافئة للعدد (12) في النظام السادس عشري (Hexadecimal)؟</div></div>
+  <div class="opts">
+    <label for="q13_1" class="opt s13_1"><span class="obadge">أ</span>10</label>
+    <label for="q13_2" class="opt s13_2"><span class="obadge">ب</span>12</label>
+    <label for="q13_3" class="opt c13_3"><span class="obadge">ج</span>18</label>
+    <label for="q13_4" class="opt s13_4"><span class="obadge">د</span>22</label>
+  </div>
+  <div class="exp exp13"><div class="etitle">💡 نحوّل 12 سادس عشري للعشري:</div>
+    <div class="estep">1 × 16¹ = 16</div>
+    <div class="estep">2 × 16⁰ = 2</div>
+    <div class="estep">✅ 16 + 2 = 18</div>
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="qcard">
+  <input type="radio" name="q14" id="q14_1"><input type="radio" name="q14" id="q14_2"><input type="radio" name="q14" id="q14_3"><input type="radio" name="q14" id="q14_4">
+  <div class="qhead"><div class="qnum">14</div><div class="qtext">ما الناتج عند تحويل العدد (44)₁₆ من النظام السادس عشري إلى النظام الثنائي (Binary)؟</div></div>
+  <div class="opts">
+    <label for="q14_1" class="opt s14_1"><span class="obadge">أ</span>1010110</label>
+    <label for="q14_2" class="opt c14_2"><span class="obadge">ب</span>1000100</label>
+    <label for="q14_3" class="opt s14_3"><span class="obadge">ج</span>1000101</label>
+    <label for="q14_4" class="opt s14_4"><span class="obadge">د</span>1000100</label>
+  </div>
+  <div class="exp exp14"><div class="etitle">💡 كل رقم سادس عشري → 4 بِتّات:</div>
+    <div class="estep">4 = 0100</div>
+    <div class="estep">4 = 0100</div>
+    <div class="estep">✅ النتيجة: 01000100 = 1000100</div>
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="qcard">
+  <input type="radio" name="q15" id="q15_1"><input type="radio" name="q15" id="q15_2"><input type="radio" name="q15" id="q15_3"><input type="radio" name="q15" id="q15_4">
+  <div class="qhead"><div class="qnum">15</div><div class="qtext">أيٌّ من العوامل التالية ليس عاملاً ثنائياً (Binary Operator)؟</div></div>
+  <div class="opts">
+    <label for="q15_1" class="opt s15_1"><span class="obadge">أ</span>Div</label>
+    <label for="q15_2" class="opt c15_2"><span class="obadge">ب</span>Not</label>
+    <label for="q15_3" class="opt s15_3"><span class="obadge">ج</span>+</label>
+    <label for="q15_4" class="opt s15_4"><span class="obadge">د</span>*</label>
+  </div>
+  <div class="exp exp15"><div class="etitle">💡 شرح الإجابة</div>العامل الثنائي يحتاج معاملَين (مثل: A+B، A*B). أما Not فيحتاج معاملاً واحداً فقط → عامل أحادي (Unary). ✅</div>
+</div>
+
+<!-- Q16 -->
+<div class="qcard">
+  <input type="radio" name="q16" id="q16_1"><input type="radio" name="q16" id="q16_2"><input type="radio" name="q16" id="q16_3"><input type="radio" name="q16" id="q16_4">
+  <div class="qhead"><div class="qnum">16</div><div class="qtext">ما ناتج جمع العدد (C)₁₆ والعدد (15)₁₀ ، ثم تحويل الناتج إلى النظام الثنائي؟</div></div>
+  <div class="opts">
+    <label for="q16_1" class="opt s16_1"><span class="obadge">أ</span>11010</label>
+    <label for="q16_2" class="opt s16_2"><span class="obadge">ب</span>11001</label>
+    <label for="q16_3" class="opt c16_3"><span class="obadge">ج</span>11011</label>
+    <label for="q16_4" class="opt s16_4"><span class="obadge">د</span>11000</label>
+  </div>
+  <div class="exp exp16"><div class="etitle">💡 خطوات الحل:</div>
+    <div class="estep">C (hex) = 12 (decimal)</div>
+    <div class="estep">12 + 15 = 27</div>
+    <div class="estep">27 → ثنائي: 16+8+2+1 = 11011</div>
+    <div class="estep">✅ النتيجة: 11011</div>
+  </div>
+</div>
+
+<!-- Q17 -->
+<div class="qcard">
+  <input type="radio" name="q17" id="q17_1"><input type="radio" name="q17" id="q17_2"><input type="radio" name="q17" id="q17_3"><input type="radio" name="q17" id="q17_4">
+  <div class="qhead"><div class="qnum">17</div><div class="qtext">في المصفوفات، إذا تم تعريف المصفوفة بهذا الشكل A(10)، فكم عدد عناصر هذه المصفوفة؟</div></div>
+  <div class="opts">
+    <label for="q17_1" class="opt c17_1"><span class="obadge">أ</span>10</label>
+    <label for="q17_2" class="opt s17_2"><span class="obadge">ب</span>11</label>
+    <label for="q17_3" class="opt s17_3"><span class="obadge">ج</span>9</label>
+    <label for="q17_4" class="opt s17_4"><span class="obadge">د</span>12</label>
+  </div>
+  <div class="exp exp17"><div class="etitle">💡 شرح الإجابة</div>A(10) تعني مصفوفة أحادية البعد بـ 10 عناصر (من الفهرس 1 إلى 10). ✅</div>
+</div>
+
+<!-- Q18 -->
+<div class="qcard">
+  <input type="radio" name="q18" id="q18_1"><input type="radio" name="q18" id="q18_2"><input type="radio" name="q18" id="q18_3"><input type="radio" name="q18" id="q18_4">
+  <div class="qhead"><div class="qnum">18</div><div class="qtext">في علم الرياضيات، يُعرَّف الاشتقاق (Derivation) بأنه أحد فروع:</div></div>
+  <div class="opts">
+    <label for="q18_1" class="opt s18_1"><span class="obadge">أ</span>الجداول الرياضية</label>
+    <label for="q18_2" class="opt c18_2"><span class="obadge">ب</span>التفاضل</label>
+    <label for="q18_3" class="opt s18_3"><span class="obadge">ج</span>التكامل</label>
+    <label for="q18_4" class="opt s18_4"><span class="obadge">د</span>العروض التقديمية</label>
+  </div>
+  <div class="exp exp18"><div class="etitle">💡 شرح الإجابة</div>الاشتقاق (Derivation) هو أحد المفاهيم الأساسية في حساب التفاضل والتكامل، وتحديداً فرع التفاضل. ✅</div>
+</div>
+
+<!-- Q19 -->
+<div class="qcard">
+  <input type="radio" name="q19" id="q19_1"><input type="radio" name="q19" id="q19_2"><input type="radio" name="q19" id="q19_3"><input type="radio" name="q19" id="q19_4">
+  <div class="qhead"><div class="qnum">19</div><div class="qtext">ما القيمة الصحيحة عند تحويل العدد العشري (90) إلى النظام الثنائي (Binary)؟</div></div>
+  <div class="opts">
+    <label for="q19_1" class="opt s19_1"><span class="obadge">أ</span>1011011</label>
+    <label for="q19_2" class="opt c19_2"><span class="obadge">ب</span>1011010</label>
+    <label for="q19_3" class="opt s19_3"><span class="obadge">ج</span>1011001</label>
+    <label for="q19_4" class="opt s19_4"><span class="obadge">د</span>1010010</label>
+  </div>
+  <div class="exp exp19"><div class="etitle">💡 نقسم 90 على 2:</div>
+    <div class="estep">90 ÷ 2 = 45  r 0</div>
+    <div class="estep">45 ÷ 2 = 22  r 1</div>
+    <div class="estep">22 ÷ 2 = 11  r 0</div>
+    <div class="estep">11 ÷ 2 = 5   r 1</div>
+    <div class="estep"> 5 ÷ 2 = 2   r 1</div>
+    <div class="estep"> 2 ÷ 2 = 1   r 0</div>
+    <div class="estep"> 1 ÷ 2 = 0   r 1</div>
+    <div class="estep">✅ النتيجة: 1011010</div>
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="qcard">
+  <input type="radio" name="q20" id="q20_1"><input type="radio" name="q20" id="q20_2"><input type="radio" name="q20" id="q20_3"><input type="radio" name="q20" id="q20_4">
+  <div class="qhead"><div class="qnum">20</div><div class="qtext">ما الرمز السادس عشري (Hexadecimal) الذي يُقابل العدد العشري (10)؟</div></div>
+  <div class="opts">
+    <label for="q20_1" class="opt c20_1"><span class="obadge">أ</span>A</label>
+    <label for="q20_2" class="opt s20_2"><span class="obadge">ب</span>B</label>
+    <label for="q20_3" class="opt s20_3"><span class="obadge">ج</span>C</label>
+    <label for="q20_4" class="opt s20_4"><span class="obadge">د</span>D</label>
+  </div>
+  <div class="exp exp20"><div class="etitle">💡 جدول التحويل:</div>
+    <div class="estep">A=10 ✅ | B=11 | C=12</div>
+    <div class="estep">D=13 | E=14 | F=15</div>
+  </div>
+</div>
+
+<!-- Q21 -->
+<div class="qcard">
+  <input type="radio" name="q21" id="q21_1"><input type="radio" name="q21" id="q21_2"><input type="radio" name="q21" id="q21_3"><input type="radio" name="q21" id="q21_4">
+  <div class="qhead"><div class="qnum">21</div><div class="qtext">يتكوّن النظام الثماني (Octal System) من أرقام يبدأ بالصفر وينتهي بالرقم:</div></div>
+  <div class="opts">
+    <label for="q21_1" class="opt s21_1"><span class="obadge">أ</span>8</label>
+    <label for="q21_2" class="opt s21_2"><span class="obadge">ب</span>6</label>
+    <label for="q21_3" class="opt s21_3"><span class="obadge">ج</span>10</label>
+    <label for="q21_4" class="opt c21_4"><span class="obadge">د</span>7</label>
+  </div>
+  <div class="exp exp21"><div class="etitle">💡 شرح الإجابة</div>النظام الثماني (Base 8) يحتوي على 8 أرقام: 0، 1، 2، 3، 4، 5، 6، 7. يبدأ بـ 0 وينتهي بـ 7. ✅</div>
+</div>
+
+<!-- Q22 -->
+<div class="qcard">
+  <input type="radio" name="q22" id="q22_1"><input type="radio" name="q22" id="q22_2"><input type="radio" name="q22" id="q22_3"><input type="radio" name="q22" id="q22_4">
+  <div class="qhead"><div class="qnum">22</div><div class="qtext">عند تبسيط الدائرة المنطقية التالية، ما هو الناتج النهائي؟<br><span class="qop">F = ABC + ABC' + AB'C + AB'C' + A'B'C</span></div></div>
+  <div class="opts">
+    <label for="q22_1" class="opt s22_1"><span class="obadge">أ</span>A + B × C</label>
+    <label for="q22_2" class="opt c22_2"><span class="obadge">ب</span>A + B̄ × C</label>
+    <label for="q22_3" class="opt s22_3"><span class="obadge">ج</span>A + B̄ × C̄</label>
+    <label for="q22_4" class="opt s22_4"><span class="obadge">د</span>Ā + B̄ × C</label>
+  </div>
+  <div class="exp exp22"><div class="etitle">💡 نبسّط باستخدام قوانين بول:</div>
+    <div class="estep">ABC + ABC' = AB(C+C') = AB</div>
+    <div class="estep">AB'C + AB'C' = AB'(C+C') = AB'</div>
+    <div class="estep">AB + AB' = A(B+B') = A</div>
+    <div class="estep">A'B'C يبقى كما هو</div>
+    <div class="estep">✅ F = A + B̄C</div>
+  </div>
+</div>
+
+<!-- Q23 -->
+<div class="qcard">
+  <input type="radio" name="q23" id="q23_1"><input type="radio" name="q23" id="q23_2"><input type="radio" name="q23" id="q23_3"><input type="radio" name="q23" id="q23_4">
+  <div class="qhead"><div class="qnum">23</div><div class="qtext">العبارة a ∧ (a ∨ b) تكافئ:</div></div>
+  <div class="opts">
+    <label for="q23_1" class="opt s23_1"><span class="obadge">أ</span>1</label>
+    <label for="q23_2" class="opt s23_2"><span class="obadge">ب</span>0</label>
+    <label for="q23_3" class="opt s23_3"><span class="obadge">ج</span>1 ∧ (a ∨ b)</label>
+    <label for="q23_4" class="opt c23_4"><span class="obadge">د</span>a ∨ (a ∧ b)</label>
+  </div>
+  <div class="exp exp23"><div class="etitle">💡 قانون الامتصاص (Absorption Law):</div>
+    <div class="estep">a ∧ (a ∨ b) = a</div>
+    <div class="estep">a ∨ (a ∧ b) = a</div>
+    <div class="estep">كلاهما = a بقانون الامتصاص ✅</div>
+    <div class="estep">الخيار د هو التعبير المكافئ الصحيح</div>
+  </div>
+</div>
+
+<!-- Q24 -->
+<div class="qcard">
+  <input type="radio" name="q24" id="q24_1"><input type="radio" name="q24" id="q24_2"><input type="radio" name="q24" id="q24_3"><input type="radio" name="q24" id="q24_4">
+  <div class="qhead"><div class="qnum">24</div><div class="qtext">إذا كانت هناك مصفوفة أبعادها (K × N) تُضرب في مصفوفة أخرى أبعادها (N × M)، فما أبعاد (حجم) المصفوفة الناتجة؟</div></div>
+  <div class="opts">
+    <label for="q24_1" class="opt s24_1"><span class="obadge">أ</span>N*N</label>
+    <label for="q24_2" class="opt s24_2"><span class="obadge">ب</span>M</label>
+    <label for="q24_3" class="opt c24_3"><span class="obadge">ج</span>K*M</label>
+    <label for="q24_4" class="opt s24_4"><span class="obadge">د</span>لا يمكن ضربها</label>
+  </div>
+  <div class="exp exp24"><div class="etitle">💡 قاعدة ضرب المصفوفات:</div>
+    <div class="estep">(K × N) × (N × M) = (K × M)</div>
+    <div class="estep">شرط الضرب: عدد أعمدة الأولى = عدد صفوف الثانية (N=N) ✅</div>
+    <div class="estep">✅ أبعاد الناتج: K × M</div>
+  </div>
+</div>
+
+<!-- Q25 -->
+<div class="qcard">
+  <input type="radio" name="q25" id="q25_1"><input type="radio" name="q25" id="q25_2"><input type="radio" name="q25" id="q25_3"><input type="radio" name="q25" id="q25_4">
+  <div class="qhead"><div class="qnum">25</div><div class="qtext">إذا كانت لدينا مصفوفة أبعادها (K × N) تُضرب في مصفوفة أخرى أبعادها (M × N)، فما أبعاد المصفوفة الناتجة؟</div></div>
+  <div class="opts">
+    <label for="q25_1" class="opt s25_1"><span class="obadge">أ</span>N*N</label>
+    <label for="q25_2" class="opt s25_2"><span class="obadge">ب</span>M</label>
+    <label for="q25_3" class="opt s25_3"><span class="obadge">ج</span>K*M</label>
+    <label for="q25_4" class="opt c25_4"><span class="obadge">د</span>لا يمكن ضربها</label>
+  </div>
+  <div class="exp exp25"><div class="etitle">💡 تحقق شرط الضرب:</div>
+    <div class="estep">(K × N) × (M × N)</div>
+    <div class="estep">عدد أعمدة الأولى = N</div>
+    <div class="estep">عدد صفوف الثانية = M</div>
+    <div class="estep">N ≠ M → لا يمكن الضرب ❌</div>
+    <div class="estep">✅ الجواب: لا يمكن ضربها</div>
+  </div>
+</div>
+
+<!-- Q26 -->
+<div class="qcard">
+  <input type="radio" name="q26" id="q26_1"><input type="radio" name="q26" id="q26_2"><input type="radio" name="q26" id="q26_3"><input type="radio" name="q26" id="q26_4">
+  <div class="qhead"><div class="qnum">26</div><div class="qtext">العبارة a ∨ (a ∧ b) تكافئ:</div></div>
+  <div class="opts">
+    <label for="q26_1" class="opt s26_1"><span class="obadge">أ</span>1</label>
+    <label for="q26_2" class="opt s26_2"><span class="obadge">ب</span>0</label>
+    <label for="q26_3" class="opt s26_3"><span class="obadge">ج</span>1 ∧ (a ∨ b)</label>
+    <label for="q26_4" class="opt c26_4"><span class="obadge">د</span>a ∧ (a ∨ b)</label>
+  </div>
+  <div class="exp exp26"><div class="etitle">💡 قانون الامتصاص:</div>
+    <div class="estep">a ∨ (a ∧ b) = a</div>
+    <div class="estep">a ∧ (a ∨ b) = a</div>
+    <div class="estep">كلاهما = a بقانون الامتصاص ✅</div>
+    <div class="estep">الخيار د هو التعبير المكافئ الصحيح</div>
+  </div>
+</div>
+
+<!-- Q27 -->
+<div class="qcard">
+  <input type="radio" name="q27" id="q27_1"><input type="radio" name="q27" id="q27_2"><input type="radio" name="q27" id="q27_3"><input type="radio" name="q27" id="q27_4">
+  <div class="qhead"><div class="qnum">27</div><div class="qtext">ناتج التبسيط للمعادلة (A + C) * (A + B) هو:</div></div>
+  <div class="opts">
+    <label for="q27_1" class="opt c27_1"><span class="obadge">أ</span>A + (BC)</label>
+    <label for="q27_2" class="opt s27_2"><span class="obadge">ب</span>A . (B + C)</label>
+    <label for="q27_3" class="opt s27_3"><span class="obadge">ج</span>ABC</label>
+    <label for="q27_4" class="opt s27_4"><span class="obadge">د</span>(A + B + C)</label>
+  </div>
+  <div class="exp exp27"><div class="etitle">💡 نوزّع باستخدام قوانين بول:</div>
+    <div class="estep">(A+C)(A+B)</div>
+    <div class="estep">= A·A + A·B + C·A + C·B</div>
+    <div class="estep">= A + AB + AC + BC</div>
+    <div class="estep">= A(1+B+C) + BC</div>
+    <div class="estep">= A + BC</div>
+    <div class="estep">✅ النتيجة: A + BC</div>
+  </div>
+</div>
+
+<!-- Q28 -->
+<div class="qcard">
+  <input type="radio" name="q28" id="q28_1"><input type="radio" name="q28" id="q28_2"><input type="radio" name="q28" id="q28_3"><input type="radio" name="q28" id="q28_4">
+  <div class="qhead"><div class="qnum">28</div><div class="qtext">نتيجة العملية الجبرية التالية: Z = XY + XȲ</div></div>
+  <div class="opts">
+    <label for="q28_1" class="opt c28_1"><span class="obadge">أ</span>A – X</label>
+    <label for="q28_2" class="opt s28_2"><span class="obadge">ب</span>B – Y</label>
+    <label for="q28_3" class="opt s28_3"><span class="obadge">ج</span>C – X̄</label>
+    <label for="q28_4" class="opt s28_4"><span class="obadge">د</span>D – Ȳ</label>
+  </div>
+  <div class="exp exp28"><div class="etitle">💡 نبسّط Z = XY + XȲ:</div>
+    <div class="estep">Z = X(Y + Ȳ)</div>
+    <div class="estep">Y + Ȳ = 1</div>
+    <div class="estep">Z = X · 1 = X</div>
+    <div class="estep">✅ Z = X → الخيار أ (A = X)</div>
+  </div>
+</div>
+
+<!-- Q29 -->
+<div class="qcard">
+  <input type="radio" name="q29" id="q29_1"><input type="radio" name="q29" id="q29_2"><input type="radio" name="q29" id="q29_3"><input type="radio" name="q29" id="q29_4">
+  <div class="qhead"><div class="qnum">29</div><div class="qtext">ما الناتج عند تحويل العدد الثنائي (1001.11) إلى النظام العشري (Decimal)؟</div></div>
+  <div class="opts">
+    <label for="q29_1" class="opt s29_1"><span class="obadge">أ</span>7.59</label>
+    <label for="q29_2" class="opt s29_2"><span class="obadge">ب</span>9.57</label>
+    <label for="q29_3" class="opt c29_3"><span class="obadge">ج</span>9.75</label>
+    <label for="q29_4" class="opt s29_4"><span class="obadge">د</span>7.95</label>
+  </div>
+  <div class="exp exp29"><div class="etitle">💡 نحوّل كل بِت:</div>
+    <div class="estep">1×2³ = 8</div>
+    <div class="estep">0×2² = 0</div>
+    <div class="estep">0×2¹ = 0</div>
+    <div class="estep">1×2⁰ = 1</div>
+    <div class="estep">1×2⁻¹ = 0.5</div>
+    <div class="estep">1×2⁻² = 0.25</div>
+    <div class="estep">✅ 8+0+0+1+0.5+0.25 = 9.75</div>
+  </div>
+</div>
+
+<!-- Q30 -->
+<div class="qcard">
+  <input type="radio" name="q30" id="q30_1"><input type="radio" name="q30" id="q30_2"><input type="radio" name="q30" id="q30_3"><input type="radio" name="q30" id="q30_4">
+  <div class="qhead"><div class="qnum">30</div><div class="qtext">ما الغرض من استخدام نظام "يونيكود" في الحوسبة؟</div></div>
+  <div class="opts">
+    <label for="q30_1" class="opt s30_1"><span class="obadge">أ</span>اللغة العربية</label>
+    <label for="q30_2" class="opt s30_2"><span class="obadge">ب</span>اللغات الأوروبية</label>
+    <label for="q30_3" class="opt s30_3"><span class="obadge">ج</span>اللغة الإنجليزية</label>
+    <label for="q30_4" class="opt c30_4"><span class="obadge">د</span>جميع لغات العالم</label>
+  </div>
+  <div class="exp exp30"><div class="etitle">💡 شرح الإجابة</div>Unicode هو معيار عالمي لترميز النصوص يدعم جميع لغات العالم وأنظمة الكتابة، بما فيها العربية والصينية واليابانية وغيرها. ✅</div>
+</div>
+
+</div>
+</body>
+</html>
