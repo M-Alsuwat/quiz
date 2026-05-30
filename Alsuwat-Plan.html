@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطة السواط – رخصة الحاسب المهنية</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;direction:rtl;background:#F0F4FA;color:#111;min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:16px 12px 90px}
+
+/* WELCOME */
+.welcome{background:linear-gradient(145deg,#0A1628,#1B3A6B,#0D2A52);border-radius:22px;padding:48px 32px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden}
+.welcome::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(201,168,76,0.07)}
+.welcome::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:rgba(201,168,76,0.05)}
+.w-badge{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:#C9A84C;padding:5px 20px;border-radius:30px;font-size:12px;font-weight:700;margin-bottom:18px}
+.w-icon{font-size:56px;margin-bottom:14px}
+.w-name{color:#C9A84C;font-size:16px;font-weight:700;margin-bottom:6px}
+.w-h1{color:#fff;font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px}
+.w-h2{color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;margin-bottom:32px}
+.w-div{width:60px;height:3px;background:linear-gradient(90deg,#C9A84C,#F0D060);border-radius:2px;margin:0 auto 32px}
+.w-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.w-stat{background:rgba(255,255,255,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:14px;padding:14px 20px;text-align:center;min-width:80px}
+.w-stat-n{font-size:22px;font-weight:900;color:#C9A84C}
+.w-stat-l{font-size:10px;color:rgba(255,255,255,0.6);margin-top:2px}
+.w-q{color:#fff;font-size:16px;font-weight:800;margin-bottom:20px}
+.w-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.w-btn{flex:1;min-width:200px;max-width:280px;padding:18px 20px;border-radius:16px;border:2px solid transparent;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;transition:all .2s;text-align:center}
+.w-btn-full{background:linear-gradient(135deg,#1A5C38,#0f3d25);color:#fff;border-color:rgba(255,255,255,0.2)}
+.w-btn-full:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,92,56,0.4)}
+.w-btn-custom{background:linear-gradient(135deg,#1B3A6B,#0D1B3E);color:#fff;border-color:rgba(201,168,76,0.4)}
+.w-btn-custom:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,58,107,0.4)}
+.w-btn-icon{font-size:24px;margin-bottom:6px;display:block}
+.w-btn-title{font-size:14px;font-weight:800}
+.w-btn-sub{font-size:10px;opacity:.75;margin-top:3px}
+
+/* BACK BTN */
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid #e0e0e0;border-radius:10px;padding:8px 16px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#555;cursor:pointer;margin-bottom:16px;transition:all .2s}
+.back-btn:hover{border-color:#1B3A6B;color:#1B3A6B}
+
+/* PLAN HEADER */
+.plan-cover{border-radius:20px;padding:32px 28px;text-align:center;margin-bottom:22px;position:relative;overflow:hidden}
+.plan-cover.green{background:linear-gradient(145deg,#0f3d25,#1A5C38,#0f3d25)}
+.plan-cover.blue{background:linear-gradient(145deg,#0A1628,#1B3A6B,#0A1628)}
+.pc-badge{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:#C9A84C;padding:5px 18px;border-radius:30px;font-size:11px;font-weight:700;margin-bottom:14px}
+.pc-icon{font-size:44px;margin-bottom:10px}
+.pc-h1{color:#fff;font-size:26px;font-weight:900;margin-bottom:6px}
+.pc-h2{color:#C9A84C;font-size:13px;font-weight:600;margin-bottom:6px}
+.pc-sub{color:rgba(255,255,255,0.5);font-size:11px}
+
+/* PHASE TABS */
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tab{flex:1;min-width:100px;padding:10px 8px;border-radius:12px;border:2px solid transparent;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:all .2s;text-align:center}
+
+/* SECTION CARD */
+.sec{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,0.06);margin-bottom:16px}
+.sec-head{padding:16px 20px;display:flex;align-items:center;gap:12px}
+.sec-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.sec-info h3{color:#fff;font-size:16px;font-weight:800}
+.sec-info p{color:rgba(255,255,255,0.65);font-size:10px;margin-top:1px}
+.sec-badge{margin-right:auto;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.5);color:#C9A84C;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:800;white-space:nowrap}
+.sec-body{padding:14px 16px}
+
+/* DAY ROW */
+.drow{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border-radius:12px;margin-bottom:7px;border-right:3px solid transparent}
+.drow-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.drow-mid{flex:1;min-width:0}
+.drow-top{display:flex;align-items:center;gap:5px;margin-bottom:4px;flex-wrap:wrap}
+.dtag{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;color:#fff;white-space:nowrap}
+.dtype{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.dw{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;color:#fff;white-space:nowrap}
+.drow-title{font-size:12.5px;font-weight:700;color:#0D1B3E;margin-bottom:4px;line-height:1.5}
+.drow-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.chip{padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600}
+.drow-date{font-size:10px;color:#bbb;white-space:nowrap;align-self:flex-start;margin-top:3px;flex-shrink:0}
+
+/* VIDEO BTN */
+.vid-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:800;cursor:pointer;border:none;font-family:'Tajawal',sans-serif;text-decoration:none;margin-top:2px}
+.vid-free{background:linear-gradient(135deg,#C9A84C,#F0D060);color:#0D1B3E}
+.vid-locked{background:#e8e8e8;color:#888;cursor:not-allowed}
+.buy-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:800;background:linear-gradient(135deg,#A93226,#C0392B);color:#fff;text-decoration:none;margin-top:2px}
+
+/* SPECIAL ROWS */
+.drow-review{background:#FFFBEE;border-right-color:#C9A84C}
+.drow-bigrev{background:#FFF0EE;border-right-color:#A93226}
+.drow-final{background:#F5EEF8;border-right-color:#4A1A6B}
+.drow-exam{background:#EEF8F3;border-right-color:#1A5C38}
+.drow-video{background:#EEF3FB;border-right-color:#1B3A6B}
+
+/* SHOW MORE */
+.show-more{width:100%;padding:10px;border-radius:10px;border:2px dashed #ddd;background:#fafafa;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#888;cursor:pointer;margin-top:4px;transition:all .2s}
+.show-more:hover{border-color:#1B3A6B;color:#1B3A6B;background:#EEF3FB}
+
+/* CUSTOM FORM */
+.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card-title{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.cnum{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1B3A6B,#0D1B3E);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.card-title h3{font-size:15px;font-weight:800;color:#0D1B3E}
+.card-title p{font-size:11px;color:#888;margin-top:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.field label{display:block;font-size:11px;font-weight:700;color:#666;margin-bottom:4px}
+.field input{width:100%;padding:9px 12px;border:2px solid #e8e8e8;border-radius:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#0D1B3E;outline:none}
+.field input:focus{border-color:#1B3A6B}
+.dcard{border-radius:12px;padding:12px 14px;border:2px solid #eee;margin-bottom:8px;transition:all .2s}
+.dtop2{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dem{font-size:18px;flex-shrink:0}
+.dinfo{flex:1;min-width:100px}
+.dname{font-size:13px;font-weight:800;color:#0D1B3E}
+.dmeta{font-size:10px;color:#aaa;margin-top:1px}
+.srow{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.slbl{font-size:11px;color:#666;white-space:nowrap}
+.sinp{width:60px;padding:6px 8px;border:2px solid #ddd;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;color:#0D1B3E;text-align:center;outline:none}
+.spct{font-size:11px;color:#aaa}
+.lbadge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:800;color:#fff;white-space:nowrap;display:none}
+.bwrap{margin-top:7px;display:none}
+.bbg{height:5px;background:#eee;border-radius:3px;overflow:hidden}
+.bfill{height:100%;border-radius:3px;transition:width .3s}
+.gbtn{width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,#1B3A6B,#0D1B3E);color:#C9A84C;border:none;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:12px;box-shadow:0 4px 16px rgba(27,58,107,0.3)}
+.gbtn:disabled{opacity:.4;cursor:not-allowed}
+.hint{text-align:center;font-size:11px;color:#aaa;margin-top:5px}
+
+/* RESULT CUSTOM */
+.res-head{padding:14px 18px;background:linear-gradient(135deg,#0D1B3E,#1B3A6B);border-radius:16px 16px 0 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.res-icon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.res-info h3{color:#fff;font-size:16px;font-weight:800}
+.res-info p{color:rgba(255,255,255,0.6);font-size:10px;margin-top:1px}
+.res-badge{margin-right:auto;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.5);color:#C9A84C;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:800;white-space:nowrap}
+.res-body{padding:14px;background:#fff;border-radius:0 0 16px 16px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.sc{border-radius:12px;padding:12px;text-align:center;border-top:3px solid}
+.sn{font-size:22px;font-weight:900}
+.sl{font-size:10px;color:#777;margin-top:2px}
+.tbar{background:linear-gradient(135deg,#0D1B3E,#1B3A6B);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.tv{color:#C9A84C;font-size:15px;font-weight:900}
+.tl{color:rgba(255,255,255,0.6);font-size:10px;margin-top:1px}
+.leg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;font-weight:600;color:#555;align-items:center}
+.ld{width:9px;height:9px;border-radius:2px;display:inline-block;margin-left:3px;vertical-align:middle}
+.pr{display:flex;align-items:flex-start;gap:8px;padding:10px 11px;border-radius:11px;margin-bottom:6px;border-right:3px solid}
+.pn{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0}
+.pm{flex:1;min-width:0}
+.pt{display:flex;align-items:center;gap:4px;margin-bottom:3px;flex-wrap:wrap}
+.ptag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;color:#fff;white-space:nowrap}
+.plv{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.pw{font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;color:#fff;white-space:nowrap}
+.ptitle{font-size:12px;font-weight:700;color:#0D1B3E;margin-bottom:3px;line-height:1.5}
+.pds{display:flex;gap:4px;flex-wrap:wrap}
+.dc{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+
+/* PRINT & RESET */
+.reset-btn{width:100%;padding:10px;border-radius:10px;border:2px dashed #1B3A6B;background:#EEF3FB;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#1B3A6B;cursor:pointer;margin-bottom:16px}
+.pbtn{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1B3A6B,#0D1B3E);color:#C9A84C;border:2px solid rgba(201,168,76,0.5);border-radius:50px;padding:11px 26px;font-size:13px;font-weight:800;font-family:'Tajawal',sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:999;display:none}
+
+/* LAST MONTH */
+.lm-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,0.06);margin-bottom:16px}
+.lm-head{background:linear-gradient(135deg,#4A1A6B,#2d0f42);padding:16px 20px;display:flex;align-items:center;gap:12px}
+.lm-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.lm-info h3{color:#fff;font-size:16px;font-weight:800}
+.lm-info p{color:rgba(255,255,255,0.65);font-size:10px;margin-top:1px}
+.lm-body{padding:14px 16px}
+.week-title{font-size:13px;font-weight:800;color:#4A1A6B;margin:12px 0 8px;padding-right:8px;border-right:3px solid #4A1A6B}
+
+@media print{.pbtn,.back-btn,.show-more,.reset-btn,.gbtn{display:none!important}.wrap{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- WELCOME SCREEN -->
+<div id="welcomeScreen">
+  <div class="welcome">
+    <div class="w-badge">رخصة الحاسب المهنية – وزارة التعليم</div>
+    <div class="w-icon">🏆</div>
+    <div class="w-name">خطة محمد السواط</div>
+    <h1 class="w-h1">للحصول على درجة خبير وأعلى</h1>
+    <p class="w-h2">خطة مدروسة ومتكاملة للنجاح في رخصة الحاسب المهنية</p>
+    <div class="w-div"></div>
+    <div class="w-stats">
+      <div class="w-stat"><div class="w-stat-n">📚 16</div><div class="w-stat-l">معياراً</div></div>
+      <div class="w-stat"><div class="w-stat-n">+1400</div><div class="w-stat-l">سؤال تجميعات</div></div>
+      <div class="w-stat"><div class="w-stat-n">📖 5</div><div class="w-stat-l">ملازم</div></div>
+
+    </div>
+    <div class="w-q">هل سبق لك اختبار قياس؟</div>
+    <div class="w-btns">
+      <button class="w-btn w-btn-full" onclick="showFull()">
+        <span class="w-btn-icon">📘</span>
+        <div class="w-btn-title">لا – الخطة الكاملة</div>
+        
+      </button>
+      <button class="w-btn w-btn-custom" onclick="showCustomForm()">
+        <span class="w-btn-icon">📊</span>
+        <div class="w-btn-title">نعم – الخطة المخصصة</div>
+        
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FULL PLAN -->
+<div id="fullPlan" style="display:none">
+  <button class="back-btn" onclick="goHome()">→ العودة للرئيسية</button>
+  <div class="plan-cover green">
+    <div class="pc-badge">خطة محمد السواط</div>
+    <div class="pc-icon">📘</div>
+    <h1 class="pc-h1">الخطة الكاملة</h1>
+    <p class="pc-h2">16 معياراً | 3 ملازم</p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px">
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:10px 18px;text-align:center">
+        <div style="color:#C9A84C;font-size:13px;font-weight:800">📅 البداية</div>
+        <div style="color:#fff;font-size:14px;font-weight:700;margin-top:3px">15 ذو الحجة 1447</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:10px 18px;text-align:center">
+        <div style="color:#C9A84C;font-size:13px;font-weight:800">🏁 النهاية</div>
+        <div style="color:#fff;font-size:14px;font-weight:700;margin-top:3px">4 جمادى الأولى 1448</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.5);border-radius:12px;padding:10px 18px;text-align:center">
+        <div style="color:#C9A84C;font-size:13px;font-weight:800">⏱️ عدد الأيام</div>
+        <div style="color:#C9A84C;font-size:18px;font-weight:900;margin-top:3px">137 يوم</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE TABS -->
+  <div class="tabs" id="fullTabs"></div>
+
+  <!-- DAYS CONTAINER -->
+  <div id="fullDays"></div>
+
+  <!-- LAST MONTH -->
+  <div id="fullLastMonth"></div>
+
+  <button class="pbtn" id="fullPrint" onclick="printAll()">🖨️ طباعة / حفظ PDF</button>
+</div>
+
+<!-- CUSTOM PLAN FORM -->
+<div id="customForm" style="display:none">
+  <button class="back-btn" onclick="goHome()">→ العودة للرئيسية</button>
+  <div class="plan-cover blue">
+    <div class="pc-badge">خطة محمد السواط</div>
+    <div class="pc-icon">📊</div>
+    <h1 class="pc-h1">الخطة المخصصة</h1>
+    <p class="pc-h2">بناءً على تقرير قياس السابق</p>
+    <p class="pc-sub">أدخل درجاتك على كل مجال لتوليد خطتك الشخصية</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <div class="cnum">1</div>
+      <div><h3>بياناتك</h3><p>أدخل اسمك وتاريخ التقرير</p></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>الاسم</label><input id="sname" placeholder="أدخل اسمك" oninput="chk()"></div>
+      <div class="field"><label>تاريخ تقرير قياس</label><input id="sdate" placeholder="مثال: 1447/10/5"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <div class="cnum">2</div>
+      <div><h3>درجات المجالات من تقرير قياس</h3><p>أدخل درجة كل مجال (0 – 100)</p></div>
+    </div>
+    <div id="dgrid"></div>
+    <button class="gbtn" id="gbtn" disabled onclick="genCustom()">✨ توليد خطتي المخصصة</button>
+    <p class="hint" id="hint">أدخل اسمك ودرجات جميع المجالات لتفعيل الزر</p>
+  </div>
+</div>
+
+<!-- CUSTOM RESULT -->
+<div id="customResult" style="display:none">
+  <button class="back-btn" onclick="goHome()">→ العودة للرئيسية</button>
+  <div class="plan-cover blue">
+    <div class="pc-badge">خطة محمد السواط</div>
+    <div class="pc-icon">📊</div>
+    <h1 class="pc-h1" id="crTitle">خطتك المخصصة</h1>
+    <p class="pc-h2" id="crSub">بناءً على تقرير قياس</p>
+    <p class="pc-sub" id="crDays">— يوم</p>
+  </div>
+  <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px">
+    <div class="res-head">
+      <div class="res-icon">📈</div>
+      <div class="res-info"><h3 id="rname">خطتك المخصصة</h3><p id="rdate">تقرير قياس</p></div>
+      <div class="res-badge" id="rdays">— يوم</div>
+    </div>
+    <div class="res-body" id="rbody"></div>
+  </div>
+  <div id="customLastMonth"></div>
+  <button class="reset-btn" onclick="goHome()">➕ إنشاء خطة جديدة</button>
+  <button class="pbtn" id="customPrint" onclick="window.print()" style="display:block">🖨️ طباعة / حفظ PDF</button>
+</div>
+
+</div>
+
+<script>
+var SHOP_URL = "https://alsuwatedu.com/mZwzyAq";
+var QIYAS_URL = "https://alsuwatedu.com/PDgQgbq";
+var MANAHIJ_URL = "https://alsuwatedu.com/NArQKrY";
+
+var DOMAINS = [
+  {id:1,name:"الحاسب والرياضيات",w:8,e:"🔢",c:"#1B3A6B",s:[{n:1,t:"أنظمة الأعداد",w:4,q:72},{n:2,t:"الدوائر التجميعية والتسلسلية المنطقية",w:3,q:56}]},
+  {id:2,name:"هندسة الحاسب",w:7,e:"🖥️",c:"#4A1A6B",s:[{n:3,t:"معمارية الحاسب",w:3,q:72},{n:4,t:"الشبكات ونموذج OSI",w:8,q:75}]},
+  {id:3,name:"علوم الحاسب",w:35,e:"⚙️",c:"#1A5C38",s:[{n:5,t:"مفاهيم البرمجة الأساسية",w:14,q:75},{n:6,t:"قواعد البيانات",w:8,q:50},{n:7,t:"الأمن السيبراني",w:5,q:40},{n:8,t:"نظم التشغيل",w:8,q:47}]},
+  {id:4,name:"تطبيقات الحاسب",w:18,e:"📱",c:"#D35400",s:[{n:9,t:"تطبيقات الحاسب والإنترنت",w:14,q:80},{n:10,t:"أخلاقيات الحاسب",w:4,q:32}]},
+  {id:5,name:"الحاسب والتعليم",w:11,e:"📚",c:"#1A6B5C",s:[{n:11,t:"أدوات التقنية الرقمية",w:7,q:25},{n:12,t:"استراتيجيات تدريس الحاسب",w:7,q:24}]},
+  {id:6,name:"استراتيجيات التدريس",w:14,e:"🎓",c:"#6B1A1A",s:[{n:14,t:"الأبحاث الحديثة في تدريس الحاسب",w:3,q:30},{n:15,t:"الخوارزميات ومهارات التفكير",w:4,q:31}]},
+  {id:7,name:"الحاسب والمنهج",w:7,e:"📋",c:"#1A4A6B",s:[{n:13,t:"مناهج الحاسب الآلي في التعليم العام",w:4,q:30},{n:16,t:"تحليل وتصنيف البيانات",w:4,q:74}]}
+];
+
+var PHASES = [
+  {id:1,name:"الأساس المهني",e:"📘",c:"#1B3A6B",light:"#EEF3FB",pct:"56%",
+   stds:[
+    {n:1,t:"أنظمة الأعداد",w:"4%",q:72,study:3,review:2,hl:false},
+    {n:9,t:"تطبيقات الحاسب والإنترنت",w:"14%",q:80,study:3,review:2,hl:true},
+    {n:4,t:"الشبكات ونموذج OSI",w:"8%",q:75,study:4,review:2,hl:false},
+    {n:6,t:"قواعد البيانات",w:"8%",q:50,study:4,review:2,hl:false},
+    {n:8,t:"نظم التشغيل",w:"8%",q:47,study:4,review:2,hl:false},
+    {n:11,t:"أدوات التقنية الرقمية",w:"7%",q:25,study:4,review:2,hl:false},
+    {n:12,t:"استراتيجيات تدريس الحاسب",w:"7%",q:24,study:4,review:2,hl:false}
+   ]},
+  {id:2,name:"إتقان المفاهيم البرمجية",e:"💻",c:"#7B3F00",light:"#FFF8EE",pct:"14%",
+   stds:[
+    {n:5,t:"مفاهيم البرمجة الأساسية",w:"14%",q:75,study:5,review:3,hl:true}
+   ]},
+  {id:3,name:"التمكين المتقدم",e:"🎯",c:"#1A5C38",light:"#EEF8F3",pct:"30%",
+   stds:[
+    {n:2,t:"الدوائر المنطقية",w:"3%",q:56,study:2,review:2,hl:false},
+    {n:3,t:"معمارية الحاسب",w:"3%",q:72,study:2,review:2,hl:false},
+    {n:7,t:"الأمن السيبراني",w:"5%",q:40,study:2,review:2,hl:false},
+    {n:10,t:"أخلاقيات الحاسب",w:"4%",q:32,study:2,review:2,hl:false},
+    {n:13,t:"مناهج الحاسب",w:"4%",q:30,study:2,review:2,hl:false},
+    {n:14,t:"الأبحاث الحديثة",w:"3%",q:30,study:2,review:2,hl:false},
+    {n:15,t:"الخوارزميات ومهارات التفكير",w:"4%",q:31,study:2,review:2,hl:false},
+    {n:16,t:"تحليل البيانات",w:"4%",q:74,study:2,review:2,hl:false}
+   ]}
+];
+
+var HIJRI_MONTHS=["محرم","صفر","ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الآخرة","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة"];
+var dayCounter=0;
+
+function hijri(offset){
+  var y=1447,m=12,d=12;
+  for(var i=0;i<offset;i++){
+    d++;
+    var dim=(m==2||m==4||m==6||m==8||m==10)?29:30;
+    if(d>dim){d=1;m++;}
+    if(m>12){m=1;y++;}
+  }
+  return d+' '+HIJRI_MONTHS[m-1]+' '+y;
+}
+
+function vidBtns(stdNum){
+  return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">'+
+    '<a href="'+SHOP_URL+'" target="_blank" class="vid-btn vid-free">🎬 فيديو أهم النقاط</a>'+
+    '<a href="'+SHOP_URL+'" target="_blank" class="buy-btn" style="background:linear-gradient(135deg,#1A5C38,#0f3d25)">🛒 العرض الكامل</a>'+
+    '<a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس (+1400)</a>'+
+  '</div>';
+}
+
+function buildStdRows(std, phaseColor, phaseLight, dayStart){
+  var h='';
+  var d=dayStart;
+
+  // اليوم الأول: فيديو أهم النقاط + مذاكرة
+  for(var i=1;i<=std.study;i++){
+    var isFirst=(i===1);
+    h+='<div class="drow" style="background:'+(std.hl?phaseLight:'#F9FAFD')+';border-right-color:'+phaseColor+'">'+
+      '<div class="drow-num" style="background:'+phaseColor+'">'+d+'</div>'+
+      '<div class="drow-mid">'+
+        '<div class="drow-top">'+
+          '<span class="dtag" style="background:'+phaseColor+'">م'+std.n+'</span>'+
+          '<span class="dtype" style="background:#0D1B3E;color:#fff">📖 مذاكرة</span>'+
+          (std.w?'<span class="dw" style="background:'+(std.hl?'linear-gradient(135deg,#C9A84C,#F0D060)':phaseColor)+';color:'+(std.hl?'#0D1B3E':'#fff')+'">'+std.w+'</span>':'')+
+        '</div>'+
+        '<div class="drow-title">'+(isFirst?'🎬 فيديو أهم النقاط + مذاكرة ':'مذاكرة ')+std.t+' – اليوم '+i+'</div>'+
+        '<div class="drow-chips">'+
+          (isFirst?'<span class="chip" style="background:'+phaseLight+';color:'+phaseColor+'">🎬 مشاهدة فيديو أهم النقاط</span>':'')+
+          '<span class="chip" style="background:'+phaseLight+';color:'+phaseColor+'">قراءة المحتوى النظري</span>'+
+          '<span class="chip" style="background:'+phaseLight+';color:'+phaseColor+'">تدوين الملاحظات</span>'+
+          (i==std.study?'<span class="chip" style="background:'+phaseLight+';color:'+phaseColor+'">ربط المفاهيم</span>':'')+
+        '</div>'+
+        (isFirst&&std.n===1?'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">'+
+          '<a href="'+SHOP_URL+'" target="_blank" class="vid-btn vid-free">🎬 فيديو أهم النقاط</a>'+
+          '<a href="'+SHOP_URL+'" target="_blank" class="buy-btn">🛒 المرجع المعتمد – العرض الكامل</a>'+
+        '</div>':'')+
+      '</div>'+
+      '<div class="drow-date">'+hijri(d-1)+'</div>'+
+    '</div>';
+    d++;
+  }
+
+  // أيام المراجعة
+  for(var j=1;j<=std.review;j++){
+    h+='<div class="drow drow-review">'+
+      '<div class="drow-num" style="background:#C9A84C;color:#0D1B3E">'+d+'</div>'+
+      '<div class="drow-mid">'+
+        '<div class="drow-top">'+
+          '<span class="dtag" style="background:'+phaseColor+'">م'+std.n+'</span>'+
+          '<span class="dtype" style="background:#C9A84C;color:#0D1B3E">🔁 مراجعة</span>'+
+        '</div>'+
+        '<div class="drow-title">مراجعة '+std.t+' – اليوم '+j+'</div>'+
+        '<div class="drow-chips">'+
+          '<span class="chip" style="background:#FFF8EE;color:#7B3F00">مراجعة شاملة للمعيار</span>'+
+          '<span class="chip" style="background:#FFF8EE;color:#7B3F00">تعميق الفهم</span>'+
+          '<span class="chip" style="background:#FFF8EE;color:#7B3F00">تحديد النقاط الضعيفة</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="drow-date">'+hijri(d-1)+'</div>'+
+    '</div>';
+    d++;
+  }
+
+  // فيديو تجميعات المعيار
+  h+='<div class="drow drow-video" style="border-right-color:'+phaseColor+'">'+
+    '<div class="drow-num" style="background:'+phaseColor+'">'+d+'</div>'+
+    '<div class="drow-mid">'+
+      '<div class="drow-top">'+
+        '<span class="dtag" style="background:'+phaseColor+'">م'+std.n+'</span>'+
+        '<span class="dtype" style="background:#C9A84C;color:#0D1B3E">🎬 فيديو تجميعات</span>'+
+      '</div>'+
+      '<div class="drow-title">فيديو شرح تجميعات – '+std.t+(std.q?' | '+std.q+' سؤال':'')+'</div>'+
+      '<div class="drow-chips">'+
+        '<span class="chip" style="background:#EEF3FB;color:#1B3A6B">مشاهدة فيديو التجميعات</span>'+
+        '<span class="chip" style="background:#EEF3FB;color:#1B3A6B">تدوين الملاحظات</span>'+
+      '</div>'+
+      (std.n===1?'<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:4px">'+
+        '<a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a>'+
+        '<a href="'+SHOP_URL+'" target="_blank" class="buy-btn" style="background:linear-gradient(135deg,#1A5C38,#0f3d25)">🛒 العرض الكامل</a>'+
+      '</div>':'')+
+    '</div>'+
+    '<div class="drow-date">'+hijri(d-1)+'</div>'+
+  '</div>';
+  d++;
+
+  // اختبار المعيار
+  h+='<div class="drow drow-exam">'+
+    '<div class="drow-num" style="background:#1A5C38">'+d+'</div>'+
+    '<div class="drow-mid">'+
+      '<div class="drow-top">'+
+        '<span class="dtag" style="background:'+phaseColor+'">م'+std.n+'</span>'+
+        '<span class="dtype" style="background:#1A5C38;color:#fff">✅ اختبار المعيار</span>'+
+      '</div>'+
+      '<div class="drow-title">حل أسئلة قياس المعيار '+std.n+' – '+std.t+'</div>'+
+      '<div class="drow-chips">'+
+        '<span class="chip" style="background:#EEF8F3;color:#1A5C38">حل أسئلة قياس المعيار</span>'+
+        '<span class="chip" style="background:#EEF8F3;color:#1A5C38">تحليل النتيجة</span>'+
+        '<span class="chip" style="background:#EEF8F3;color:#1A5C38">تسجيل الدرجة</span>'+
+      '</div>'+
+    '</div>'+
+    '<div class="drow-date">'+hijri(d-1)+'</div>'+
+  '</div>';
+  d++;
+
+  return {html:h, nextDay:d};
+}
+
+
+function buildLastMonth(){
+  var h='<div class="lm-card"><div class="lm-head"><div class="lm-icon">🏆</div><div class="lm-info"><h3>الشهر الأخير – المرحلة النهائية</h3><p>من 7/4/1448 حتى الاختبار | 4/5/1448</p></div></div><div class="lm-body">';
+
+  // أسبوع 1
+  var w1=[
+    {d:1,t:"🎬 فيديو تجميعات 1",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",week:"الأسبوع الأول – مشاهدة التجميعات",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+    {d:2,t:"🎬 فيديو تجميعات 2",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+    {d:3,t:"🎬 فيديو تجميعات 3",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+    {d:4,t:"🎬 فيديو تجميعات 4",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+    {d:5,t:"🎬 فيديو تجميعات 1447 الفترة الأولى",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+    {d:6,t:"🎬 فيديو تجميعات 1447 الفترة الثانية",tasks:["مشاهدة الفيديو كاملاً","تدوين الملاحظات","تحديد الأسئلة الصعبة"],type:"video",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a></div>'},
+  ];
+
+  // أسبوع 2
+  var w2=[
+    {d:7,t:"📘 ملزمة تجميعات المناهج للمراجعة",tasks:["مشاهدة فيديو تجميعات المناهج","تدوين الملاحظات","تحديد النقاط المهمة"],type:"video",week:"الأسبوع الثاني – مراجعة ملزمة المناهج",extra:'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"><a href="'+MANAHIJ_URL+'" target="_blank" class="buy-btn">📘 تجميعات المناهج</a></div>'},
+    {d:8,t:"مراجعة الأساس المهني – اليوم 1",tasks:["مراجعة م1 وم9 الأعلى وزناً","تحديد نقاط الضعف","حل أسئلة قياس"],type:"review"},
+    {d:9,t:"مراجعة الأساس المهني – اليوم 2",tasks:["مراجعة م4 وم6 وم8","تحديد نقاط الضعف","حل أسئلة قياس"],type:"review"},
+    {d:10,t:"مراجعة الأساس المهني – اليوم 3",tasks:["مراجعة م11 وم12","تحديد المعايير الضعيفة","حل أسئلة قياس"],type:"review"},
+    {d:11,t:"مراجعة البرمجة – م5",tasks:["مراجعة مفاهيم البرمجة","تحديد نقاط الضعف","حل أسئلة قياس"],type:"review"},
+    {d:12,t:"مراجعة التمكين المتقدم – اليوم 1",tasks:["مراجعة م2 وم3 وم7 وم10","تحديد نقاط الضعف","حل أسئلة قياس"],type:"review"},
+    {d:13,t:"مراجعة التمكين المتقدم – اليوم 2",tasks:["مراجعة م13 وم14 وم15 وم16","تحديد المعايير الضعيفة","حل أسئلة قياس"],type:"review"}
+  ];
+
+  // أسبوع 3
+  var w3=[
+    {d:14,t:"اختبار تجريبي 1 – 88 سؤال / 100 دقيقة",tasks:["محاكاة كاملة","إدارة الوقت","تحليل النتيجة"],type:"exam",week:"الأسبوع الثالث – المحاكاة المكثفة"},
+    {d:15,t:"اختبار تجريبي 2 – 88 سؤال / 100 دقيقة",tasks:["محاكاة كاملة","إدارة الوقت","تحليل النتيجة"],type:"exam"},
+    {d:16,t:"اختبار تجريبي 3 – 88 سؤال / 100 دقيقة",tasks:["محاكاة كاملة","إدارة الوقت","تحليل النتيجة"],type:"exam"},
+    {d:17,t:"اختبار تجريبي 4 – 88 سؤال / 100 دقيقة",tasks:["محاكاة كاملة","إدارة الوقت","تحليل النتيجة"],type:"exam"},
+    {d:18,t:"اختبار تجريبي 5 – 88 سؤال / 100 دقيقة",tasks:["محاكاة كاملة","إدارة الوقت","تحليل النتيجة"],type:"exam"},
+    {d:19,t:"اختبار تجريبي 6 – 88 سؤال / 100 دقيقة",tasks:["آخر محاكاة كاملة","100 دقيقة بالضبط","قيّم وضعك النهائي"],type:"exam"}
+  ];
+
+  // أسبوع 4
+  var w4=[
+    {d:20,t:"تحديد نقاط الضعف النهائية + مراجعة مركزة",tasks:["راجع نتائج كل الاختبارات","حدد أضعف المعايير","ركز عليها اليوم"],type:"review",week:"الأسبوع الرابع – تحديد نقاط الضعف والتهيئة"},
+    {d:21,t:"🔁 مراجعة م9 وم5 – الأعلى وزناً (14% لكل منهما)",tasks:["مراجعة تطبيقات الحاسب","مراجعة مفاهيم البرمجة","تثبيت أهم النقاط"],type:"review"},
+    {d:22,t:"🏆 يوم الاختبار – 4/5/1448",tasks:["استيقظ مبكراً","تناول وجبة جيدة","ثق بنفسك – أنت مستعد"],type:"realexam"}
+  ];
+
+  var allDays=w1.concat(w2).concat(w3).concat(w4);
+  allDays.forEach(function(item){
+    if(item.week) h+='<div class="week-title">'+item.week+'</div>';
+    var bg=item.type=="realexam"?"#D4EDDA":item.type=="exam"?"#EEF8F3":item.type=="video"?"#EEF3FB":item.type=="final"?"#F5EEF8":"#FFFBEE";
+    var bc=item.type=="realexam"?"#155724":item.type=="exam"?"#1A5C38":item.type=="video"?"#1B3A6B":item.type=="final"?"#4A1A6B":"#C9A84C";
+    var numBg=item.type=="realexam"?"linear-gradient(135deg,#C9A84C,#F0D060)":item.type=="exam"?"#1A5C38":item.type=="video"?"#1B3A6B":item.type=="final"?"#4A1A6B":"#C9A84C";
+    var numColor=item.type=="realexam"?"#0D1B3E":item.type=="review"?"#0D1B3E":"#fff";
+    var typeLabel=item.type=="realexam"?"🏆 يوم الاختبار الحقيقي":item.type=="exam"?"📝 اختبار تجريبي":item.type=="video"?"🎬 فيديو":item.type=="final"?"🧘 تهيئة":"🔁 مراجعة";
+    var typeBg=item.type=="realexam"?"linear-gradient(135deg,#C9A84C,#F0D060)":item.type=="exam"?"#1A5C38":item.type=="video"?"#1B3A6B":item.type=="final"?"#4A1A6B":"#C9A84C";
+    var typeColor=item.type=="realexam"?"#0D1B3E":item.type=="review"?"#0D1B3E":"#fff";
+    h+='<div class="drow" style="background:'+bg+';border-right-color:'+bc+'">'+
+      '<div class="drow-num" style="background:'+numBg+';color:'+numColor+'">'+item.d+'</div>'+
+      '<div class="drow-mid">'+
+        '<div class="drow-top"><span class="dtype" style="background:'+typeBg+';color:'+typeColor+'">'+typeLabel+'</span></div>'+
+        '<div class="drow-title">'+item.t+'</div>'+
+        '<div class="drow-chips">'+item.tasks.map(function(t){return'<span class="chip" style="background:'+bg+';color:'+bc+'">'+t+'</span>';}).join('')+'</div>'+
+        (item.extra||'')+
+      '</div>'+
+    '</div>';
+  });
+
+  h+='</div>';
+
+  // الأيام المتبقية بعد يوم الاختبار
+
+
+  h+='</div></div>';
+  return h;
+}
+function showFull(weakOrder){
+  document.getElementById('welcomeScreen').style.display='none';
+  document.getElementById('customForm').style.display='none';
+  document.getElementById('fullPlan').style.display='block';
+  document.getElementById('fullPrint').style.display='block';
+
+  // Build tabs
+  var tabsHtml='<button class="tab" id="tab-0" onclick="filterPhase(0)" style="background:#0D1B3E;color:#C9A84C;border-color:#0D1B3E">📋 الكل</button>';
+  PHASES.forEach(function(p){
+    tabsHtml+='<button class="tab" id="tab-'+p.id+'" onclick="filterPhase('+p.id+')" style="background:'+p.light+';color:'+p.c+'">'+p.e+' '+p.name+'</button>';
+  });
+  document.getElementById('fullTabs').innerHTML=tabsHtml;
+
+  // Build all days
+  var allHTML={};
+  var dayNum=1;
+  PHASES.forEach(function(phase){
+    allHTML[phase.id]='';
+    phase.stds.forEach(function(std){
+      var result=buildStdRows(std,phase.c,phase.light,dayNum);
+      allHTML[phase.id]+=result.html;
+      dayNum=result.nextDay;
+    });
+    // مراجعة الملزمة
+    allHTML[phase.id]+='<div class="drow drow-bigrev">'+
+      '<div class="drow-num" style="background:#A93226">'+dayNum+'</div>'+
+      '<div class="drow-mid">'+
+        '<div class="drow-top"><span class="dtag" style="background:#A93226">🔁</span>'+
+        '<span class="dtype" style="background:#A93226;color:#fff">مراجعة الملزمة</span></div>'+
+        '<div class="drow-title">مراجعة شاملة – '+phase.name+'</div>'+
+        '<div class="drow-chips">'+
+          '<span class="chip" style="background:#FFF0EE;color:#A93226">مراجعة جميع معايير الملزمة</span>'+
+          '<span class="chip" style="background:#FFF0EE;color:#A93226">حل أسئلة قياس شاملة</span>'+
+          '<span class="chip" style="background:#FFF0EE;color:#A93226">تحديد النقاط الضعيفة</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="drow-date">'+hijri(dayNum-1)+'</div>'+
+    '</div>';
+    dayNum++;
+  });
+
+  window._fullHTML=allHTML;
+  window._currentPhase=0;
+  renderFullDays(0);
+
+  // Last month
+  document.getElementById('fullLastMonth').innerHTML=buildLastMonth();
+  window.scrollTo(0,0);
+}
+
+function renderFullDays(phaseId){
+  var html='';
+  if(phaseId==0){
+    PHASES.forEach(function(p){ html+=window._fullHTML[p.id]; });
+  } else {
+    html=window._fullHTML[phaseId]||'';
+  }
+
+  // Show first 15, rest hidden
+  var wrap=document.getElementById('fullDays');
+  wrap.innerHTML='<div id="visibleDays">'+html+'</div>';
+  limitRows('visibleDays');
+}
+
+function limitRows(containerId){
+  var c=document.getElementById(containerId);
+  if(!c)return;
+  var rows=c.querySelectorAll('.drow');
+  var limit=12;
+  if(rows.length<=limit)return;
+  for(var i=limit;i<rows.length;i++) rows[i].style.display='none';
+  var btn=document.createElement('button');
+  btn.className='show-more';
+  btn.innerHTML='▼ عرض المزيد ('+(rows.length-limit)+' يوم إضافي)';
+  var shown=limit;
+  btn.onclick=function(){
+    var next=Math.min(shown+12,rows.length);
+    for(var i=shown;i<next;i++) rows[i].style.display='';
+    shown=next;
+    if(shown>=rows.length) btn.style.display='none';
+    else btn.innerHTML='▼ عرض المزيد ('+(rows.length-shown)+' يوم إضافي)';
+  };
+  c.appendChild(btn);
+}
+
+function filterPhase(id){
+  window._currentPhase=id;
+  document.querySelectorAll('.tabs .tab').forEach(function(t,i){
+    var p=i==0?null:PHASES[i-1];
+    if((i==0&&id==0)||(p&&p.id==id)){
+      t.style.background=p?p.c:'#0D1B3E';
+      t.style.color='#C9A84C';
+      t.style.borderColor=p?p.c:'#0D1B3E';
+    } else {
+      t.style.background=p?p.light:'#F0F4FA';
+      t.style.color=p?p.c:'#555';
+      t.style.borderColor='transparent';
+    }
+  });
+  renderFullDays(id);
+}
+
+// BUILD CUSTOM FORM
+var SC={};
+function showCustomForm(){
+  document.getElementById('welcomeScreen').style.display='none';
+  document.getElementById('customForm').style.display='block';
+  var g=document.getElementById('dgrid');
+  if(g.children.length>0)return;
+  DOMAINS.forEach(function(d){
+    var stds=d.s.map(function(s){return'م'+s.n}).join(' • ');
+    var div=document.createElement('div');
+    div.className='dcard';div.id='dc'+d.id;
+    div.innerHTML='<div class="dtop2">'+
+      '<span class="dem">'+d.e+'</span>'+
+      '<div class="dinfo"><div class="dname">'+d.name+'</div><div class="dmeta">الوزن: '+d.w+'% | '+stds+'</div></div>'+
+      '<div class="srow"><span class="slbl">الدرجة:</span>'+
+      '<input class="sinp" type="number" min="0" max="100" placeholder="--" id="si'+d.id+'" oninput="os('+d.id+',this.value)">'+
+      '<span class="spct">%</span></div>'+
+      '<span class="lbadge" id="lb'+d.id+'"></span>'+
+      '</div>'+
+      '<div class="bwrap" id="bw'+d.id+'"><div class="bbg"><div class="bfill" id="bf'+d.id+'" style="width:0"></div></div></div>';
+    g.appendChild(div);
+  });
+  window.scrollTo(0,0);
+}
+
+function lv(s){
+  if(s>=80)return{l:"قوي",c:"#1A5C38",bg:"#EEF8F3",i:"💪"};
+  if(s>=60)return{l:"متوسط",c:"#D35400",bg:"#FFF3E0",i:"📖"};
+  return{l:"ضعيف",c:"#A93226",bg:"#FFEEEE",i:"🔥"};
+}
+function pd(s,w){
+  if(s>=80)return{st:1,rv:1};
+  if(s>=60)return{st:w>=8?3:2,rv:1};
+  return{st:w>=14?5:w>=8?4:3,rv:w>=8?2:1};
+}
+
+function os(id,val){
+  var n=Math.min(100,Math.max(0,parseInt(val)||0));
+  SC[id]=n;
+  var v=lv(n);
+  var dc=document.getElementById('dc'+id);
+  dc.style.background=v.bg;dc.style.borderColor=v.c;
+  var lb=document.getElementById('lb'+id);
+  lb.style.display='';lb.style.background=v.c;lb.textContent=v.i+' '+v.l;
+  var bw=document.getElementById('bw'+id);bw.style.display='';
+  var bf=document.getElementById('bf'+id);bf.style.width=n+'%';bf.style.background=v.c;
+  chk();
+}
+
+function chk(){
+  var nm=document.getElementById('sname').value.trim();
+  var all=DOMAINS.every(function(d){return SC[d.id]!==undefined;});
+  document.getElementById('gbtn').disabled=!(nm&&all);
+  var hint=document.getElementById('hint');
+  if(!nm)hint.textContent='أدخل اسمك أولاً';
+  else if(!all)hint.textContent='أدخل درجات جميع المجالات لتفعيل الزر';
+  else hint.textContent='';
+}
+
+function genCustom(){
+  var nm=document.getElementById('sname').value.trim();
+  var dt=document.getElementById('sdate').value.trim();
+  var items=[],wk=0,md=0,st=0,ts=0,tr=0;
+
+  // Sort domains: ضعيف first, then متوسط, then قوي
+  var sortedDomains = DOMAINS.slice().sort(function(a,b){
+    var sa=SC[a.id]||0, sb=SC[b.id]||0;
+    var pa=sa<60?0:sa<80?1:2, pb=sb<60?0:sb<80?1:2;
+    if(pa!==pb) return pa-pb;  // ضعيف أولاً
+    return pb-pa; // نفس المستوى: الأعلى وزناً أولاً (درجة أقل = ضعف أكثر)
+  });
+
+  sortedDomains.forEach(function(d){
+    var sc=SC[d.id]||0;
+    var v=lv(sc);
+    if(v.l==='ضعيف')wk++;else if(v.l==='متوسط')md++;else st++;
+    // داخل كل مجال: رتب المعايير من الأعلى وزناً للأدنى
+    var sortedStds = d.s.slice().sort(function(a,b){ return b.w-a.w; });
+    sortedStds.forEach(function(s){
+      var p=pd(sc,s.w);
+      ts+=p.st;tr+=p.rv;
+      items.push({dn:d.name,de:d.e,dc:d.c,std:'م'+s.n,tt:s.t,w:s.w,q:s.q||0,sc:sc,v:v,st:p.st,rv:p.rv,tot:p.st+p.rv,pr:v.l==='ضعيف'?0:v.l==='متوسط'?1:2,dw:d.w});
+    });
+  });
+
+  // No additional sort needed - already sorted by domain level then standard weight
+  items.sort(function(a,b){
+    if(a.pr!==b.pr) return a.pr-b.pr; // ضعيف أولاً
+    if(a.dw!==b.dw) return b.dw-a.dw; // الأعلى وزن مجال أولاً
+    return b.w-a.w; // الأعلى وزن معيار أولاً
+  });
+  var td=ts+tr,fd=22;  // الشهر الأخير ثابت 22 يوم
+
+  document.getElementById('crTitle').textContent='الخطة المخصصة';
+  document.getElementById('crSub').textContent='بناءً على تقرير قياس بتاريخ: '+(dt||'—');
+  document.getElementById('crDays').textContent=(td+fd)+' يوم إجمالاً';
+  
+  // حساب تاريخ النهاية
+  var months_ar=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+  function hijriAdd(y,m,d,n){
+    for(var i=0;i<n;i++){
+      d++;
+      if(d>(m%2===1?30:29)){d=1;m++;}
+      if(m>12){m=1;y++;}
+    }
+    return {y:y,m:m,d:d};
+  }
+  var endDate = hijriAdd(1447,12,15,td+fd-1);
+  var endStr = endDate.d+' '+months_ar[endDate.m]+' '+endDate.y;
+  
+  // Update cover with dates
+  document.getElementById('crSub').innerHTML='بناءً على تقرير قياس بتاريخ: '+(dt||'—')+
+    '<div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:12px">'+
+    '<div style="background:rgba(255,255,255,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:8px 14px;text-align:center">'+
+    '<div style="color:#C9A84C;font-size:12px;font-weight:800">📅 البداية</div>'+
+    '<div style="color:#fff;font-size:13px;font-weight:700;margin-top:2px">15 ذو الحجة 1447</div></div>'+
+    '<div style="background:rgba(255,255,255,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:8px 14px;text-align:center">'+
+    '<div style="color:#C9A84C;font-size:12px;font-weight:800">🏁 النهاية</div>'+
+    '<div style="color:#fff;font-size:13px;font-weight:700;margin-top:2px">'+endStr+'</div></div>'+
+    '<div style="background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.5);border-radius:10px;padding:8px 14px;text-align:center">'+
+    '<div style="color:#C9A84C;font-size:12px;font-weight:800">⏱️ عدد الأيام</div>'+
+    '<div style="color:#C9A84C;font-size:16px;font-weight:900;margin-top:2px">'+(td+fd)+' يوم</div></div>'+
+    '</div>';
+  document.getElementById('rname').textContent='خطة: '+nm;
+  document.getElementById('rdate').textContent='تقرير قياس: '+(dt||'—');
+  document.getElementById('rdays').textContent=(td+fd)+' يوم';
+
+  var h='';
+  h+='<div class="sgrid">'+
+    '<div class="sc" style="background:#FFEEEE;border-top-color:#A93226"><div class="sn" style="color:#A93226">'+wk+'</div><div class="sl">🔥 ضعيفة</div><div style="font-size:9px;color:#aaa;margin-top:1px">أقل من 60%</div></div>'+
+    '<div class="sc" style="background:#FFF3E0;border-top-color:#D35400"><div class="sn" style="color:#D35400">'+md+'</div><div class="sl">📖 متوسطة</div><div style="font-size:9px;color:#aaa;margin-top:1px">60%–79%</div></div>'+
+    '<div class="sc" style="background:#EEF8F3;border-top-color:#1A5C38"><div class="sn" style="color:#1A5C38">'+st+'</div><div class="sl">💪 قوية</div><div style="font-size:9px;color:#aaa;margin-top:1px">80% فأكثر</div></div>'+
+    '</div>';
+  h+='<div class="tbar">'+
+    '<div><div class="tv">'+ts+' يوم</div><div class="tl">📚 مذاكرة</div></div>'+
+    '<div><div class="tv">'+tr+' يوم</div><div class="tl">🔁 مراجعة</div></div>'+
+    '<div><div class="tv">'+fd+' يوم</div><div class="tl">⭐ نهائية</div></div>'+
+    '<div><div class="tv">'+(td+fd)+' يوم</div><div class="tl">📅 المجموع</div></div>'+
+    '</div>';
+  h+='<div class="leg"><span><span class="ld" style="background:#A93226"></span>ضعيف – أولاً</span><span><span class="ld" style="background:#D35400"></span>متوسط</span><span><span class="ld" style="background:#1A5C38"></span>قوي</span></div>';
+
+  var isFirst=true;
+  items.forEach(function(item){
+    h+='<div class="pr" style="background:'+item.v.bg+';border-right-color:'+item.v.c+'">'+
+      '<div class="pn" style="background:'+item.v.c+'">'+item.std+'</div>'+
+      '<div class="pm">'+
+        '<div class="pt">'+
+          '<span class="ptag" style="background:'+item.dc+'">'+item.de+' '+item.dn+'</span>'+
+          '<span class="plv" style="background:'+item.v.bg+';color:'+item.v.c+';border:1px solid '+item.v.c+'">'+item.v.i+' '+item.v.l+' – '+item.sc+'%</span>'+
+          '<span class="pw" style="background:'+item.v.c+'">'+item.w+'%</span>'+
+        '</div>'+
+        '<div class="ptitle">'+item.tt+'</div>'+
+        // Steps
+        '<div class="pds" style="margin-top:6px">'+
+          '<span class="dc" style="background:#EEF3FB;color:#1B3A6B">🎬 فيديو أهم النقاط</span>'+
+          '<span class="dc" style="background:#EEF3FB;color:#1B3A6B">📖 '+item.st+(item.st===1?' يوم مذاكرة':' أيام مذاكرة')+'</span>'+
+          '<span class="dc" style="background:#FFF8EE;color:#7B3F00">🔁 '+item.rv+(item.rv===1?' يوم':' يومان')+' مراجعة</span>'+
+          '<span class="dc" style="background:#EEF3FB;color:#1B3A6B">🎬 فيديو تجميعات'+(item.q?' – '+item.q+' سؤال':'')+'</span>'+
+          '<span class="dc" style="background:#EEF8F3;color:#1A5C38">✅ اختبار المعيار</span>'+
+          '<span class="dc" style="background:'+item.v.bg+';color:'+item.v.c+'">⏱️ '+(item.tot+2)+' أيام</span>'+
+        '</div>'+
+        // Buttons - first standard only
+        (isFirst?'<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:6px">'+
+          '<a href="'+QIYAS_URL+'" target="_blank" class="buy-btn">🎬 تجميعات قياس</a>'+
+          '<a href="'+SHOP_URL+'" target="_blank" class="buy-btn" style="background:linear-gradient(135deg,#1A5C38,#0f3d25)">🛒 العرض الكامل</a>'+
+        '</div>':'')+
+      '</div>'+
+    '</div>';
+    isFirst=false;
+  });
+
+
+
+  document.getElementById('rbody').innerHTML=h;
+  document.getElementById('customLastMonth').innerHTML=buildLastMonth();
+  document.getElementById('customForm').style.display='none';
+  document.getElementById('customResult').style.display='block';
+  window.scrollTo(0,0);
+}
+
+function printAll(){
+  // Show all hidden rows
+  var allRows = document.querySelectorAll('.drow, .pr');
+  allRows.forEach(function(r){ r.style.display='flex'; });
+  // Hide show-more buttons
+  var btns = document.querySelectorAll('.show-more');
+  btns.forEach(function(b){ b.style.display='none'; });
+  // Print
+  setTimeout(function(){ window.print(); }, 300);
+}
+
+function goHome(){
+  document.getElementById('welcomeScreen').style.display='block';
+  document.getElementById('fullPlan').style.display='none';
+  document.getElementById('customForm').style.display='none';
+  document.getElementById('customResult').style.display='none';
+  document.getElementById('fullPrint').style.display='none';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
